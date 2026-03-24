@@ -17,7 +17,7 @@ export default function Navbar() {
         alignItems: "center"
       }}>
         <div style={{ fontWeight: 700, fontSize: "1.2rem" }}>
-          Davi <span style={{ color: "var(--accent)" }}>.Dev</span>
+          Davi Morais <span style={{ color: "var(--accent)" }}>Engenheiro de Software</span>
         </div>
         
         <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
