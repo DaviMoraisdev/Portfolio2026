@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
     
     try {
       const res = await fetch("/api/contact", {
@@ -24,9 +26,12 @@ export default function Contact() {
       if (res.ok) {
         setSuccess(true);
         setName(""); setEmail(""); setMessage("");
+      } else {
+        const data = await res.json();
+        setError(data.error || "Ocorreu um erro ao enviar a mensagem. Tente novamente.");
       }
-    } catch (error) {
-      console.error(error);
+    } catch {
+      setError("Não foi possível enviar a mensagem. Verifique sua conexão e tente novamente.");
     } finally {
       setLoading(false);
     }
@@ -64,6 +69,19 @@ export default function Contact() {
             gap: "1.5rem",
             textAlign: "left"
           }}>
+            {error && (
+              <div style={{
+                padding: "1rem",
+                background: "rgba(239, 68, 68, 0.1)",
+                color: "#ef4444",
+                borderRadius: "8px",
+                border: "1px solid #ef4444",
+                fontWeight: 500,
+                fontSize: "0.95rem"
+              }}>
+                {error}
+              </div>
+            )}
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               <label htmlFor="name" style={{ fontWeight: 500 }}>Nome</label>
               <input type="text" id="name" required value={name} onChange={e => setName(e.target.value)} style={{

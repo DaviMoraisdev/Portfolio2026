@@ -13,8 +13,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Desenvolvedor Back-End | Portfólio",
-  description: "Portfólio de um Desenvolvedor Back-End focado em APIs e arquitetura.",
+  title: "Davi Morais | Desenvolvedor Back-End",
+  description: "Portfólio de Davi Morais – Desenvolvedor Back-End focado em APIs, arquitetura de software e soluções escaláveis.",
+  openGraph: {
+    title: "Davi Morais | Desenvolvedor Back-End",
+    description: "Portfólio de Davi Morais – Desenvolvedor Back-End focado em APIs, arquitetura de software e soluções escaláveis.",
+    type: "website",
+    locale: "pt_BR",
+  },
+  twitter: {
+    card: "summary",
+    title: "Davi Morais | Desenvolvedor Back-End",
+    description: "Portfólio de Davi Morais – Desenvolvedor Back-End focado em APIs, arquitetura de software e soluções escaláveis.",
+  },
 };
 
 export default function RootLayout({

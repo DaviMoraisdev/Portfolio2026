@@ -13,7 +13,8 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!email.includes('@')) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
       return NextResponse.json(
         { error: 'E-mail inválido' },
         { status: 400 }
