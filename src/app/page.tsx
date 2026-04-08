@@ -1,5 +1,7 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
+import Skills from "../components/Skills";
+import Experience from "../components/Experience";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 
@@ -9,6 +11,8 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Skills />
+        <Experience />
         <Projects />
         <Contact />
       </main>
@@ -19,7 +23,7 @@ export default function Home() {
         borderTop: "1px solid var(--border)",
         marginTop: "4rem"
       }}>
-        <p>&copy; {new Date().getFullYear()} Davi. Desenvolvido com foco no Back-End.</p>
+        <p>&copy; {new Date().getFullYear()} Davi Morais. Desenvolvido com foco no Back-End.</p>
       </footer>
     </>
   );
