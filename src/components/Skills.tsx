@@ -1,71 +1,77 @@
-const skillCategories = [
-  {
-    title: "Back-End",
-    skills: ["Node.js", "Express", "Python", "FastAPI", "Java", "Spring Boot"],
-  },
-  {
-    title: "Banco de Dados",
-    skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
-  },
-  {
-    title: "DevOps & Ferramentas",
-    skills: ["Docker", "Git", "GitHub Actions", "Linux"],
-  },
-  {
-    title: "Conceitos & Práticas",
-    skills: ["REST APIs", "JWT", "Clean Architecture", "SOLID", "TDD"],
-  },
-];
+import { skills } from "@/data/portfolio";
 
 export default function Skills() {
   return (
     <section id="skills" className="section">
       <div className="container">
-        <h2 style={{ fontSize: "2.5rem", marginBottom: "3rem", fontWeight: 700 }}>
-          Habilidades &amp; <span style={{ color: "var(--accent)" }}>Tecnologias</span>
+        <span className="eyebrow">Stack em evolucao</span>
+        <h2 className="section-title">
+          Habilidades de <span className="highlight">Atuação</span>
         </h2>
+        <p className="section-copy">
+          Habilidades em desenvolvimento, entender requisitos, modelar dados, construir funcionalidades e manter o codigo compreensivel.
+        </p>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "2rem",
-        }}>
-          {skillCategories.map((category) => (
-            <div key={category.title} style={{
-              background: "var(--bg-secondary)",
-              border: "1px solid var(--border)",
-              borderRadius: "12px",
-              padding: "1.5rem",
-            }}>
-              <h3 style={{
-                fontSize: "1rem",
-                fontWeight: 600,
-                color: "var(--accent)",
-                marginBottom: "1rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-              }}>
-                {category.title}
-              </h3>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-                {category.skills.map((skill) => (
-                  <span key={skill} style={{
-                    fontSize: "0.875rem",
-                    background: "var(--bg-primary)",
-                    border: "1px solid var(--border)",
-                    color: "var(--text-primary)",
-                    padding: "0.35rem 0.75rem",
-                    borderRadius: "6px",
-                    fontWeight: 500,
-                  }}>
-                    {skill}
-                  </span>
+        <div className="skills-grid">
+          {skills.map((category) => (
+            <article className="skill-card card" key={category.title}>
+              <h3>{category.title}</h3>
+              <div>
+                {category.items.map((skill) => (
+                  <span key={skill}>{skill}</span>
                 ))}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
+
+      <style>{`
+        .skills-grid {
+          display: grid;
+          gap: 1rem;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          margin-top: 2rem;
+        }
+
+        .skill-card {
+          padding: 1.25rem;
+        }
+
+        .skill-card h3 {
+          color: var(--accent);
+          font-size: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        .skill-card div {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.45rem;
+        }
+
+        .skill-card span {
+          background: var(--surface-strong);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-sm);
+          color: var(--text-secondary);
+          font-size: 0.86rem;
+          font-weight: 700;
+          padding: 0.42rem 0.55rem;
+        }
+
+        @media (max-width: 920px) {
+          .skills-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+
+        @media (max-width: 560px) {
+          .skills-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,86 +1,221 @@
-"use client";
-
-import { FileText } from "lucide-react";
-
-const GithubIcon = ({ size = 26 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-  </svg>
-);
-
-const LinkedinIcon = ({ size = 26 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-  </svg>
-);
+import { ArrowRight, FileText, MapPin } from "lucide-react";
+import { profile, projects, skills } from "@/data/portfolio";
+import GitHubIcon from "./GitHubIcon";
+import LinkedInIcon from "./LinkedInIcon";
 
 export default function Hero() {
   return (
-    <section id="about" className="section" style={{
-      minHeight: "100vh",
-      display: "flex",
-      alignItems: "center",
-      paddingTop: "6rem" // account for sticky nav
-    }}>
+    <section id="about" className="hero-section">
       <div className="container">
-        <h1 style={{
-          fontSize: "4rem",
-          fontWeight: 800,
-          lineHeight: 1.1,
-          marginBottom: "1.5rem"
-        }}>
-          <span style={{ color: "var(--accent)" }}>Davi Morais</span> <br />
-          Engenheiro de Software em formação
-        </h1>
-        
-        <p style={{
-          fontSize: "1.25rem",
-          color: "var(--text-secondary)",
-          maxWidth: "900px",
-          marginBottom: "2rem",
-          lineHeight: 1.6
-        }}>
-          Olá, me chamo Davi e sou estudante de Engenharia de Software com foco em desenvolvimento back-end. Possuo conhecimento em construção de APIs, integração de sistemas, modelagem e manipulação de bancos de dados, além de fundamentos de arquitetura de software, versionamento de código e testes. Busco desenvolver soluções escaláveis, seguras e bem estruturadas e estou em busca da minha primeira oportunidade na área para evoluir tecnicamente e contribuir com projetos de forma consistente.
-        </p>
+        <div className="hero-grid">
+          <div className="hero-content">
+            <span className="eyebrow">
+              <span className="status-dot" />
+              {profile.target}
+            </span>
 
-        <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", flexWrap: "wrap" }}>
-          <div style={{ display: "flex", gap: "1rem" }}>
-            <a href="#projects" style={{
-              background: "var(--accent)",
-              color: "#fff",
-              padding: "0.75rem 1.5rem",
-              borderRadius: "6px",
-              fontWeight: 600,
-              transition: "background 0.2s"
-            }}>
-              Ver Projetos
-            </a>
-            <a href="#contact" style={{
-              background: "transparent",
-              color: "var(--text-primary)",
-              padding: "0.75rem 1.5rem",
-              borderRadius: "6px",
-              border: "1px solid var(--border)",
-              fontWeight: 600,
-              transition: "background 0.2s"
-            }}>
-              Entrar em Contato
-            </a>
+            <h1 className="hero-title">
+              {profile.name}, Desenvolvedor Back-end Junior
+            </h1>
+
+            <p className="hero-copy">
+              Estudante de Análise e Desenvolvimento de Sistemas, em desenvolvimento com tecnologias relacionadas: JavaScript, TypeScript e banco de dados, Docker, Container, Python e atividades relacionadas. Quero atuar em um time onde possa evoluir e aprender com proatividade e produção.
+            </p>
+
+            <div className="hero-actions" aria-label="Acoes principais">
+              <a className="button button-primary" href="#projects">
+                Ver projetos <ArrowRight size={18} />
+              </a>
+              <a className="button button-secondary" href="#contact">
+                Entrar em contato
+              </a>
+              {profile.resumeUrl ? (
+                <a className="button button-ghost" href={profile.resumeUrl}>
+                  <FileText size={18} /> Baixar curriculo
+                </a>
+              ) : (
+                <span className="button button-ghost hero-disabled-action" aria-disabled="true">
+                  <FileText size={18} /> Curriculo em preparacao
+                </span>
+              )}
+            </div>
+
+            <div className="hero-socials" aria-label="Links profissionais">
+              <a href={profile.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="Abrir GitHub de Davi Morais">
+                <GitHubIcon size={22} /> GitHub
+              </a>
+              <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="Abrir LinkedIn de Davi Morais">
+                <LinkedInIcon size={22} /> LinkedIn
+              </a>
+              <span>
+                <MapPin size={22} /> {profile.location}
+              </span>
+            </div>
           </div>
 
-          <div style={{ display: "flex", gap: "1.25rem", alignItems: "center", marginLeft: "1rem" }}>
-            <a href="https://github.com/DaviMoraisdev" target="_blank" rel="noopener noreferrer" title="GitHub" style={{ color: "var(--text-secondary)", transition: "color 0.2s" }} onMouseEnter={e => e.currentTarget.style.color="var(--accent)"} onMouseLeave={e => e.currentTarget.style.color="var(--text-secondary)"}>
-              <GithubIcon size={26} />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" title="LinkedIn" style={{ color: "var(--text-secondary)", transition: "color 0.2s" }} onMouseEnter={e => e.currentTarget.style.color="var(--accent)"} onMouseLeave={e => e.currentTarget.style.color="var(--text-secondary)"}>
-              <LinkedinIcon size={26} />
-            </a>
-            <a href="/curriculo.pdf" target="_blank" rel="noopener noreferrer" title="Currículo" style={{ color: "var(--text-secondary)", transition: "color 0.2s" }} onMouseEnter={e => e.currentTarget.style.color="var(--accent)"} onMouseLeave={e => e.currentTarget.style.color="var(--text-secondary)"}>
-              <FileText size={26} />
-            </a>
-          </div>
+          <aside className="hero-panel card" aria-label="Resumo profissional">
+            <p className="panel-label">Resumo</p>
+            <div className="profile-summary">
+              <h2>{profile.name}</h2>
+              <span>{profile.role}</span>
+            </div>
+            <div className="compact-info">
+              <div>
+                <strong>Habilidades e tecnologias</strong>
+                <span>{skills.flatMap((category) => category.items).slice(0, 8).join(", ")}</span>
+              </div>
+              <div>
+                <strong>Nível de Inglês</strong>
+                <span>Intermediário - Avançado</span>
+              </div>
+              <div>
+                <strong>Projetos feitos</strong>
+                <span>{projects.length} projetos em produção</span>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
+
+      <style>{`
+        .hero-section {
+          align-items: center;
+          display: flex;
+          min-height: 100vh;
+          padding: 7rem 0 4rem;
+        }
+
+        .hero-grid {
+          align-items: center;
+          display: grid;
+          gap: 3rem;
+          grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.5fr);
+        }
+
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 4.8rem);
+          font-weight: 900;
+          line-height: 1.03;
+          margin: 1.5rem 0;
+          max-width: 760px;
+        }
+
+        .hero-copy {
+          color: var(--text-secondary);
+          font-size: clamp(1.05rem, 2vw, 1.22rem);
+          line-height: 1.75;
+          max-width: 780px;
+        }
+
+        .hero-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.85rem;
+          margin-top: 2rem;
+        }
+
+        .hero-socials {
+          align-items: center;
+          color: var(--text-secondary);
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          margin-top: 1.4rem;
+        }
+
+        .hero-disabled-action {
+          color: var(--text-muted);
+          cursor: default;
+          opacity: 0.82;
+        }
+
+        .hero-disabled-action:hover {
+          transform: none;
+        }
+
+        .hero-socials a,
+        .hero-socials span {
+          align-items: center;
+          display: inline-flex;
+          gap: 0.45rem;
+        }
+
+        .hero-socials a:hover {
+          color: var(--accent);
+        }
+
+        .status-dot {
+          background: var(--success);
+          border-radius: 999px;
+          box-shadow: 0 0 0 6px var(--success-soft);
+          height: 0.55rem;
+          width: 0.55rem;
+        }
+
+        .hero-panel {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          padding: 1.15rem;
+        }
+
+        .panel-label {
+          color: var(--text-muted);
+          font-size: 0.82rem;
+          font-weight: 800;
+          letter-spacing: 0.08em;
+          margin-bottom: 0.35rem;
+          text-transform: uppercase;
+        }
+
+        .hero-panel h2 {
+          font-size: 1.25rem;
+          line-height: 1.2;
+        }
+
+        .profile-summary {
+          border-bottom: 1px solid var(--border);
+          display: grid;
+          gap: 0.25rem;
+          padding-bottom: 1rem;
+        }
+
+        .profile-summary span,
+        .compact-info span {
+          color: var(--text-secondary);
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+
+        .compact-info {
+          display: grid;
+          gap: 0.9rem;
+        }
+
+        .compact-info div {
+          display: grid;
+          gap: 0.25rem;
+        }
+
+        .compact-info strong {
+          font-size: 0.9rem;
+        }
+
+        @media (max-width: 860px) {
+          .hero-section {
+            min-height: auto;
+            padding-top: 6rem;
+          }
+
+          .hero-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .hero-panel {
+            max-width: 520px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,82 +1,104 @@
-const experiences = [
-  {
-    type: "education",
-    title: "Engenharia de Software",
-    organization: "Universidade",
-    period: "2023 – Cursando",
-    description:
-      "Graduação com foco em desenvolvimento de software, arquitetura de sistemas, estruturas de dados, algoritmos e engenharia de requisitos.",
-  },
-  {
-    type: "experience",
-    title: "Desenvolvedor Back-End (Projetos Pessoais)",
-    organization: "Freelance / Open Source",
-    period: "2023 – Presente",
-    description:
-      "Desenvolvimento de APIs RESTful, sistemas de autenticação com JWT, gerenciamento de filas com Redis/Celery e integração com bancos de dados relacionais e não-relacionais.",
-  },
-  {
-    type: "education",
-    title: "Cursos Complementares",
-    organization: "Rocketseat, Alura, Udemy",
-    period: "2022 – Presente",
-    description:
-      "Node.js avançado, Docker na prática, Java com Spring Boot, Python para back-end, arquitetura limpa e boas práticas de desenvolvimento.",
-  },
-];
+import { GraduationCap, Laptop } from "lucide-react";
+import { experiences } from "@/data/portfolio";
 
 export default function Experience() {
   return (
-    <section id="experience" className="section" style={{ background: "var(--bg-secondary)" }}>
+    <section id="experience" className="section experience-section">
       <div className="container">
-        <h2 style={{ fontSize: "2.5rem", marginBottom: "3rem", fontWeight: 700 }}>
-          Formação &amp; <span style={{ color: "var(--accent)" }}>Experiência</span>
+        <span className="eyebrow">Trajetoria</span>
+        <h2 className="section-title">
+          Formações e <span className="highlight">Certificações</span>
         </h2>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+        <div className="timeline">
           {experiences.map((item, index) => (
-            <div key={index} style={{
-              display: "flex",
-              gap: "1.5rem",
-              background: "var(--bg-primary)",
-              border: "1px solid var(--border)",
-              borderRadius: "12px",
-              padding: "1.75rem",
-            }}>
-              <div style={{
-                flexShrink: 0,
-                width: "10px",
-                borderRadius: "4px",
-                background: item.type === "education" ? "var(--accent)" : "#22c55e",
-              }} />
-              <div>
-                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.5rem" }}>
+            <article className="timeline-item card" key={`${item.title}-${index}`}>
+              <div className="timeline-icon" aria-hidden="true">
+                {item.type === "education" ? <GraduationCap size={20} /> : <Laptop size={20} />}
+              </div>
+              <div className="timeline-body">
+                <div className="timeline-header">
                   <div>
-                    <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>{item.title}</h3>
-                    <p style={{ color: "var(--accent)", fontWeight: 500, fontSize: "0.95rem" }}>
-                      {item.organization}
-                    </p>
+                    <h3>{item.title}</h3>
+                    <p>{item.organization}</p>
                   </div>
-                  <span style={{
-                    fontSize: "0.8rem",
-                    background: "rgba(37, 99, 235, 0.1)",
-                    color: "var(--accent)",
-                    padding: "0.25rem 0.75rem",
-                    borderRadius: "12px",
-                    fontWeight: 500,
-                    whiteSpace: "nowrap",
-                  }}>
+                  <span className="badge">
                     {item.period}
                   </span>
                 </div>
-                <p style={{ color: "var(--text-secondary)", lineHeight: 1.6, marginTop: "0.5rem" }}>
-                  {item.description}
-                </p>
+                <p className="timeline-description">{item.description}</p>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
+
+      <style>{`
+        .experience-section {
+          background: var(--bg-secondary);
+        }
+
+        .timeline {
+          display: grid;
+          gap: 1rem;
+          margin-top: 2rem;
+        }
+
+        .timeline-item {
+          display: grid;
+          gap: 1rem;
+          grid-template-columns: auto 1fr;
+          padding: 1.25rem;
+        }
+
+        .timeline-icon {
+          align-items: center;
+          background: var(--accent-soft);
+          border-radius: var(--radius-sm);
+          color: var(--accent);
+          display: flex;
+          height: 42px;
+          justify-content: center;
+          width: 42px;
+        }
+
+        .timeline-header {
+          align-items: flex-start;
+          display: flex;
+          gap: 1rem;
+          justify-content: space-between;
+        }
+
+        .timeline-header h3 {
+          font-size: 1.12rem;
+          line-height: 1.3;
+        }
+
+        .timeline-header p,
+        .timeline-description {
+          color: var(--text-secondary);
+        }
+
+        .timeline-header p {
+          font-weight: 700;
+          margin-top: 0.25rem;
+        }
+
+        .timeline-description {
+          line-height: 1.65;
+          margin-top: 0.8rem;
+        }
+
+        @media (max-width: 620px) {
+          .timeline-item {
+            grid-template-columns: 1fr;
+          }
+
+          .timeline-header {
+            flex-direction: column;
+          }
+        }
+      `}</style>
     </section>
   );
 }

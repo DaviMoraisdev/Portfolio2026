@@ -4,6 +4,7 @@ import Skills from "../components/Skills";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
+import { profile } from "@/data/portfolio";
 
 export default function Home() {
   return (
@@ -16,14 +17,16 @@ export default function Home() {
         <Projects />
         <Contact />
       </main>
-      <footer style={{
-        textAlign: "center",
-        padding: "2rem",
-        color: "var(--text-secondary)",
-        borderTop: "1px solid var(--border)",
-        marginTop: "4rem"
-      }}>
-        <p>&copy; {new Date().getFullYear()} Davi Morais. Desenvolvido com foco no Back-End.</p>
+      <footer>
+        <div className="site-footer">
+          <div className="container">
+            <p>&copy; {new Date().getFullYear()} {profile.name}. Desenvolvido com foco em back-end junior.</p>
+            <div className="footer-links">
+              <a href={profile.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
       </footer>
     </>
   );
