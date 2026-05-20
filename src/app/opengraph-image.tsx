@@ -34,13 +34,13 @@ export default function Image() {
             width: "100%",
           }}
         >
-          <div style={{ color: "#60a5fa", fontSize: 32, fontWeight: 800 }}>
+          <div style={{ color: "#60a5fa", display: "flex", fontSize: 32, fontWeight: 800 }}>
             {profile.target}
           </div>
-          <div style={{ fontSize: 82, fontWeight: 900, letterSpacing: 0, lineHeight: 0.95 }}>
+          <div style={{ display: "flex", fontSize: 82, fontWeight: 900, letterSpacing: 0, lineHeight: 0.95 }}>
             {profile.name}
           </div>
-          <div style={{ color: "#c3ccdc", fontSize: 42, lineHeight: 1.2 }}>
+          <div style={{ color: "#c3ccdc", display: "flex", fontSize: 42, lineHeight: 1.2 }}>
             {profile.role} focado em APIs, dados e projetos web.
           </div>
         </div>
