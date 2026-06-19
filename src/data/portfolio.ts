@@ -3,6 +3,7 @@ export type Project = {
   description: string;
   stack: string[];
   highlights: string[];
+  repoUrl?: string;
   status: "Projeto em produção";
 };
 
@@ -78,10 +79,22 @@ export const experiences: ExperienceItem[] = [
 
 export const projects: Project[] = [
   {
-    title: "E-Commerce API",
+    title: "E-commerce Project",
     description:
-      "API RESTful para operacoes de e-commerce, com foco em autenticacao, carrinho, pedidos, pagamentos e persistencia de dados.",
-    stack: ["Node.js", "Express", "PostgreSQL", "JWT", "Docker"],
+      "Plataforma de e-commerce baseada em microservicos, desenvolvida com Node.js, TypeScript, Express e Prisma, com PostgreSQL, MongoDB e Redis, autenticacao JWT, testes com Jest e infraestrutura em Docker Compose.",
+    stack: [
+      "Node.js",
+      "TypeScript",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "JWT",
+      "Jest",
+      "Docker",
+    ],
+    repoUrl: "https://github.com/DaviMoraisdev/ecommerce-platform",
     status: "Projeto em produção",
     highlights: [
       "Fluxo de autenticacao para proteger rotas sensiveis.",

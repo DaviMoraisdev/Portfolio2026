@@ -35,6 +35,16 @@ export default function Projects() {
               </ul>
 
               <div className="project-actions">
+                {project.repoUrl && (
+                  <a
+                    className="button button-primary"
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Ver repositório
+                  </a>
+                )}
                 <span className="button button-secondary project-production">
                   {project.status}
                 </span>
