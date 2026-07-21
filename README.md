@@ -8,7 +8,7 @@ Portfolio pessoal criado para apresentar perfil profissional, projetos, habilida
 
 ## Objetivo
 
-Atuar como desenvolvedor back-end júnior ou estagiário, com foco em Node.js, TypeScript e PostgreSQL na construção de APIs REST seguras e escaláveis. Aprendizado orientado a fundamentos, aplicado no desenvolvimento de uma plataforma de e-commerce em microsserviços (Docker, JWT, MongoDB, Redis).
+Atuar como desenvolvedor back-end júnior ou estagiário, com foco em Node.js, TypeScript e PostgreSQL na construção de APIs REST seguras e escaláveis. Aprendizado orientado a fundamentos, aplicado no desenvolvimento de uma plataforma de e-commerce em microsserviços (Docker, JWT, MongoDB, Redis). Além deste projeto, busco sempre evoluir e me especializar na tecnologia e suas vertentes.
 
 ## Stack
 
