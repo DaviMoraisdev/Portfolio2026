@@ -8,7 +8,7 @@ Portfolio pessoal criado para apresentar perfil profissional, projetos, habilida
 
 ## Objetivo
 
-Servir como vitrine objetiva para recrutadores e equipes tecnicas: em poucos segundos a pessoa deve entender quem sou, qual vaga busco, quais tecnologias estudo e quais projetos comprovam minha evolucao pratica.
+Atuar como desenvolvedor back-end júnior ou estagiário, com foco em Node.js, TypeScript e PostgreSQL na construção de APIs REST seguras e escaláveis. Aprendizado orientado a fundamentos, aplicado no desenvolvimento de uma plataforma de e-commerce em microsserviços (Docker, JWT, MongoDB, Redis).
 
 ## Stack
 
